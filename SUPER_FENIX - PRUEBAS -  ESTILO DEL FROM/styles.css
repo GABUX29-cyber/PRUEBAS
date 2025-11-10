@@ -1,0 +1,428 @@
+/* ========================================================= */
+/* 1. ESTILOS GENERALES Y LAYOUT BASE                        */
+/* ========================================================= */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 15px; /* Padding base */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 15px 10px;
+    background-color: #fdd835;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.2em; /* Ligeramente aumentado en base */
+    margin-bottom: 5px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+header p {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #555;
+}
+
+h2 {
+    color: #333;
+    font-size: 1.6em;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Contenedores principales */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: unset;
+    box-sizing: border-box;
+}
+
+/* ========================================================= */
+/* 2. ESTILOS DE TABLAS Y GRILLES (Resultados y Ranking)     */
+/* ========================================================= */
+
+.card.resultados-dia {
+    background-color: #fdd835;
+    color: #333;
+    width: 100%;
+    padding: 15px;
+}
+.card.resultados-dia h2 {
+    margin: 0 0 12px 0;
+    font-size: 1.6em;
+    color: #333;
+}
+.card.resultados-dia p {
+    font-size: 1em;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+/* GRILA DE RESULTADOS */
+.card.resultados-dia .resultados-grilla {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 0.9em;
+}
+.card.resultados-dia .resultados-grilla th {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 4px;
+    font-weight: 700;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    min-width: 35px;
+}
+.card.resultados-dia .resultados-grilla td {
+    padding: 8px 4px;
+    border: 1px solid #eee;
+    font-size: 1em;
+    font-weight: 700;
+}
+.card.resultados-dia .resultados-grilla .sorteo-name {
+    background-color: #555;
+    color: #fff;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 10px;
+    min-width: 90px;
+}
+.card.resultados-dia .resultados-grilla .numero-resultado {
+    text-align: center;
+    min-width: 35px;
+}
+
+
+/* TABLA DE RANKING (participantes) */
+.card.ranking {
+    width: 100%;
+    overflow-x: auto; /* PERMITE SCROLL HORIZONTAL EN MÓVIL */
+    padding: 15px;
+}
+.card.ranking h2 {
+    margin-top: 0;
+}
+.card.ranking table {
+    min-width: 600px; /* Ancho mínimo para la tabla */
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+.card.ranking thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 700;
+    padding: 10px 8px;
+    text-align: center;
+    border: 1px solid #007bff;
+    font-size: 0.8em;
+    white-space: nowrap;
+}
+.card.ranking tbody td {
+    background-color: #fdfdfd;
+    border-bottom: 1px solid #eee;
+    color: #444;
+    padding: 8px 5px;
+    text-align: center;
+    border-left: 1px solid #f5f5f5;
+    border-right: 1px solid #f5f5f5;
+    font-weight: 600;
+}
+.card.ranking tbody tr:nth-child(even) td {
+    background-color: #f5f5f5;
+}
+
+/* Estilos de aciertos y ganadores (mantenidos) */
+.acierto-individual { background-color: #e6ffe6 !important; color: #28a745 !important; font-weight: 700; border-radius: 4px; }
+.card.ranking .aciertos { background-color: #fff3cd !important; color: #ffc107 !important; font-weight: 700; border-radius: 4px; }
+.card.ranking .ganador-final {
+    background-color: #ffc107 !important;
+    color: #000000 !important;
+    font-weight: 800;
+    border-radius: 4px;
+    font-size: 1em;
+    padding: 5px 8px;
+    line-height: 1;
+    display: inline-block;
+}
+.card.ranking tr:hover td { background-color: #e9f7fe; }
+.card.ranking .fila-ganadora td { background-color: #fffbe6 !important; }
+
+/* ========================================================= */
+/* 3. ESTILOS DE ESTADÍSTICAS Y ADMIN PANEL                  */
+/* ========================================================= */
+
+/* Tarjetas de estadísticas (ajuste flexible) */
+.card.estadistica {
+    flex: 1 1 calc(50% - 8px); /* Por defecto, 2 columnas */
+    padding: 18px 10px;
+    justify-content: flex-start;
+}
+.card.estadistica h3 { margin: 0; font-size: 0.9em; color: #666; margin-top: 8px; font-weight: 600; }
+.card.estadistica .valor { font-size: 1.6em; font-weight: 700; margin-bottom: 3px; white-space: nowrap; }
+/* Colores de estadísticas (mantenidos) */
+.card.estadistica.ventas .valor { color: #007bff; }
+.card.estadistica.recaudado .valor { color: #dc3545; }
+.card.estadistica.premio-total .valor { color: #28a745; }
+.card.estadistica.acumulado .valor { color: #6f42c1; }
+.card.estadistica.casa .valor { color: #ffc107; }
+.card.estadistica.ganadores .valor { color: #17a2b8; }
+.card.estadistica i { font-size: 1.6em; margin-bottom: 8px; color: #999; }
+
+/* Admin Panel Specific Styles */
+.admin-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+}
+
+.admin-section h2 { color: #007bff; font-size: 1.5em; font-weight: 700; margin-top: 0; margin-bottom: 20px; }
+.admin-section h3 { color: #555; font-size: 1.1em; margin-top: 25px; margin-bottom: 10px; }
+.admin-section form label { display: block; margin-bottom: 8px; font-weight: 600; color: #444; }
+
+.admin-section form input[type="text"],
+.admin-section form input[type="number"],
+.admin-section form select {
+    width: 100%; /* Ajuste a 100% para mejor visualización en móvil */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.admin-section form .jugadas-container {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Alineado a la izquierda por defecto */
+}
+.admin-section form .jugadas-container input {
+    flex: 1 1 50px;
+    width: auto;
+    text-align: center;
+}
+
+.admin-section form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.admin-section form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.admin-section ul { list-style: none; padding: 0; }
+.admin-section li {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+    color: #333;
+    flex-wrap: wrap; /* Esencial para el responsive */
+}
+
+/* Estilos de edición del panel */
+.admin-section li > span:first-child {
+    flex-grow: 1; /* Permite que el contenido principal ocupe espacio */
+    margin-right: 10px;
+    word-break: break-word; /* Rompe palabras largas si es necesario */
+}
+.btn-editar, .btn-guardar, .btn-eliminar { /* Añadido .btn-eliminar */
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-top: 5px; /* Para que no se amontonen en móvil */
+}
+.btn-editar { background-color: #ffc107; color: #333; }
+.btn-guardar { background-color: #28a745; color: white; }
+.btn-eliminar { background-color: #dc3545; color: white; } /* Color para eliminar */
+
+.editable-input {
+    padding: 5px;
+    margin: 0 2px;
+    width: auto;
+    display: inline-block;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 4px;
+}
+.jugada-edit { width: 35px; text-align: center; }
+.resultado-edit-num { width: 50px; text-align: center; }
+
+/* ========================================================= */
+/* 4. RESPONSIVE DESIGN - OPTIMIZADO PARA TODOS LOS TAMAÑOS  */
+/* ========================================================= */
+
+/* Tablets y Pantallas medianas (768px y menos) */
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.4em; }
+    .card-container { gap: 10px; margin-bottom: 20px;}
+    .card { padding: 15px; }
+
+    /* Estadísticas: Mantiene 2 columnas */
+    .card.estadistica {
+        flex: 1 1 calc(50% - 10px);
+    }
+    .card.estadistica h3 { font-size: 0.85em; }
+    .card.estadistica .valor { font-size: 1.4em; }
+
+    /* Ranking (Scroll horizontal si es necesario) */
+    .card.ranking table { min-width: 500px; }
+    .card.ranking thead th, .card.ranking tbody td {
+        padding: 8px 4px;
+        font-size: 0.75em;
+    }
+
+    /* Admin Panel */
+    .admin-section { padding: 15px; }
+    .admin-section h2 { font-size: 1.3em; }
+    .admin-section form input, .admin-section form select { font-size: 0.9em; padding: 8px; }
+}
+
+/* Teléfonos Móviles y pantallas pequeñas (480px y menos) */
+@media (max-width: 480px) {
+    body { padding: 8px; }
+    header { padding: 10px 5px; margin-bottom: 15px; }
+    h1 { font-size: 1.7em; }
+    h2 { font-size: 1.2em; }
+    .card-container { gap: 8px; margin-bottom: 15px;}
+    .card { padding: 12px; }
+
+    /* 🚨 ESTADÍSTICAS: Pasa a 1 columna (100% de ancho) 🚨 */
+    .card.estadistica {
+        flex: 1 1 100%;
+        padding: 10px;
+        flex-direction: row; /* Poner el ícono y el texto en la misma línea */
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+    .card.estadistica i { margin-right: 10px; margin-bottom: 0; }
+    .card.estadistica h3 { margin-top: 0; }
+    .card.estadistica .valor { font-size: 1.5em; }
+    /* Contenedor flexible para alinear texto/valor */
+    .card.estadistica > div { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: flex-start; 
+        flex-grow: 1; 
+    }
+
+    /* Resultados del día (Ajuste de tabla) */
+    .card.resultados-dia .resultados-grilla { font-size: 0.8em; }
+    .card.resultados-dia .resultados-grilla th, .card.resultados-dia .resultados-grilla td { padding: 5px 2px; }
+    .card.resultados-dia .resultados-grilla .sorteo-name { min-width: 65px; padding-left: 5px; }
+
+    /* Ranking (Scroll horizontal, tamaño mínimo) */
+    .card.ranking table { min-width: 380px; }
+    .card.ranking thead th, .card.ranking tbody td { font-size: 0.65em; padding: 5px 3px; }
+    .card.ranking .ganador-final { font-size: 0.8em; padding: 3px 5px; }
+
+    /* Admin Panel */
+    .admin-section { padding: 10px; }
+    .admin-section h2 { font-size: 1.1em; }
+    .admin-section form input, .admin-section form select { font-size: 0.85em; padding: 7px; margin-bottom: 10px; }
+
+    /* Jugadas de registro: Se envuelven para ocupar menos espacio horizontal */
+    .admin-section form .jugadas-container { justify-content: space-between; }
+    .admin-section form .jugadas-container input { 
+        flex: 0 0 18%; /* Permite 5 inputs en una línea + gaps */
+        max-width: 50px; 
+    }
+
+    /* Lista de participantes/resultados (Elementos se apilan) */
+    .admin-section li { 
+        flex-direction: column; 
+        align-items: flex-start;
+        padding: 8px 10px; 
+        font-size: 0.8em;
+    }
+    .admin-section li > span:first-child { 
+        width: 100%; 
+        margin-right: 0; 
+        margin-bottom: 5px; 
+    }
+
+    /* Botones de edición/guardar/eliminar */
+    .btn-editar, .btn-guardar, .btn-eliminar { 
+        font-size: 0.75em; 
+        padding: 4px 6px; 
+        margin-left: 0; 
+        margin-right: 5px;
+    }
+    .editable-input { font-size: 0.8em; padding: 3px; }
+    .jugada-edit { width: 30px; }
+    .resultado-edit-num { width: 40px; }
+}
